@@ -4,6 +4,11 @@ from tensorflow.keras.losses import sparse_categorical_crossentropy, binary_cros
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
+import numpy as np
+import streamlit as st
+from PIL import Image
+import urllib.request
+
 def gen_labels():
     train = '../Data/Train'
     train_generator = ImageDataGenerator(rescale = 1/255)
@@ -21,7 +26,7 @@ def preprocess(image):
     image = np.array(image.resize((300, 300), Image.ANTIALIAS))
     image = np.array(image, dtype='uint8')
     image = np.array(image)/255.0
-
+    
     return image
 
 def model_arc():

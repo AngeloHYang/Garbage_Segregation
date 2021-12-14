@@ -49,8 +49,18 @@ try:
 
         model = model_arc()
         model.load_weights("../weights/model.h5")
+        print("\n\nModel loaded!")
 
         prediction = model.predict(img[np.newaxis, ...])
-        st.info('Hey! The uploaded image has been classified as " {} waste " '.format(labels[np.argmax(prediction[0], axis=-1)]))
+        
+        print("Predict done!")
+        
+        #st.info('Hey! The uploaded image has been classified as " {} waste " '.format(labels[np.argmax(prediction[0], axis=-1)]))
+        labelsList1 = [i for i in labels.keys()]
+        labelsList2 = [i for i in labels.values()]
+        print(labelsList1)
+        print(labelsList2)
+        st.info('Hey! The uploaded image has been classified as " {} waste " '.format(labelsList1[np.argmax(prediction[0], axis=-1)]))
+        
 except:
   pass
